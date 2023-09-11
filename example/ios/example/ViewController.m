@@ -19,6 +19,7 @@
     NSString* url = @"http://example.com?key2=value2&key3=value3&key1=VALUE1";
     Cross *cross = [[Cross alloc] init];
     NSString*newUrl = [cross signatureUrl:url];
+    [cross callLib];
     NSLog(url);
     NSLog(newUrl);
     // Do any additional setup after loading the view.
