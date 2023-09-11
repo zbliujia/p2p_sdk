@@ -6,7 +6,8 @@ Pod::Spec.new do |s|
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
-  s.source           = { :path => '.' }
+  # s.source           = { :path => '.' }
+  s.source           = { :git => 'git@github.com:zbliujia/p2p_sdk.git', :tag => s.version.to_s }
   # 设置源文件，切记不要把测试代码包含进来
   s.source_files = 'ios/Classes/**/*','third_party/**/*.{cc,cpp,h}','src/**/*.{cc,cpp,h}'
   # 暴露头文件，否则引用该spec的项目无法找到头文件

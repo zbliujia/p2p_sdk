@@ -5,6 +5,7 @@
 /.idea/libraries
 .DS_Store
 /build
+/example/android/build
 /captures
 .cxx
 .idea
