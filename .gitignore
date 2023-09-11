@@ -9,5 +9,4 @@
 .cxx
 .idea
 cmake-build-debug
-gradle-wrapper.jar
 .vscode
