@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.10.2)
+set(CMAKE_CXX_STANDARD 14)
+project(jz)
+include_directories(${CMAKE_SOURCE_DIR}/third_party/openssl/android/include ${PROJECT_SOURCE_DIR}/client_node/include ${PROJECT_SOURCE_DIR}/lib ${PROJECT_SOURCE_DIR}/lib/x ${PROJECT_SOURCE_DIR}/lib/kcp)
+add_library(crypto STATIC IMPORTED ${CMAKE_SOURCE_DIR}/third_party/openssl/android/libcrypto.a)
+add_library(ssl STATIC IMPORTED ${CMAKE_SOURCE_DIR}/third_party/openssl/android/libssl.a)
+aux_source_directory(./client_node/src source)
+aux_source_directory(./lib/kcp kcp_source)
+aux_source_directory(./lib/x x_source)
+add_library(${PROJECT_NAME} ${source} ${kcp_source} ${x_source})
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/client_node/include)
+# LDFLAGS  = -lpthread -lssl -lcrypto
+# set(OPENSSL_USE_STATIC_LIBS TRUE)
+# find_package(OpenSSL REQUIRED)
+find_package(Threads REQUIRED)
+
+# target_link_libraries(${PROJECT_NAME} crypto ssl Threads::Threads)
+target_link_libraries(${PROJECT_NAME} Threads::Threads)

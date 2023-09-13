@@ -5,4 +5,5 @@ public class Cross {
         System.loadLibrary("cross");
     }
     public static native String signatureUrl(String url);
+    public static native int sdkinit(String token);
 }
