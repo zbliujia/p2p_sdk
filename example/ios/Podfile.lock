@@ -1,8 +1,16 @@
 PODS:
   - cross (0.0.1)
+  - GCDWebServer (3.5.4):
+    - GCDWebServer/Core (= 3.5.4)
+  - GCDWebServer/Core (3.5.4)
 
 DEPENDENCIES:
   - cross (from `../../`)
+  - GCDWebServer (~> 3.0)
+
+SPEC REPOS:
+  trunk:
+    - GCDWebServer
 
 EXTERNAL SOURCES:
   cross:
@@ -10,7 +18,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   cross: 7eaafa4ba0624f2250e5a990892f2068b355f5eb
+  GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
 
-PODFILE CHECKSUM: f2ab3451fd989e1b353223529f7ffea96a0d4472
+PODFILE CHECKSUM: cb41f6219a7bc8184dea1e2d5df1f9c029c15f58
 
 COCOAPODS: 1.11.2

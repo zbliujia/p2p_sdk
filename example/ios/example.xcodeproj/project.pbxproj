@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E3247FC2AE3F7B000C6DAD2 /* LocalNetworkPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3247FB2AE3F7B000C6DAD2 /* LocalNetworkPrivacy.swift */; };
 		3B28E6A925DFA35000281D66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6A825DFA35000281D66 /* AppDelegate.m */; };
 		3B28E6AC25DFA35000281D66 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6AB25DFA35000281D66 /* SceneDelegate.m */; };
 		3B28E6AF25DFA35000281D66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6AE25DFA35000281D66 /* ViewController.m */; };
@@ -37,6 +38,8 @@
 /* Begin PBXFileReference section */
 		1027DB460DF346CACEACC6DD /* Pods_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1028CBABAFF5FAC8F2C70DD6 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
+		1E3247FA2AE3F7AF00C6DAD2 /* example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "example-Bridging-Header.h"; sourceTree = "<group>"; };
+		1E3247FB2AE3F7B000C6DAD2 /* LocalNetworkPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkPrivacy.swift; sourceTree = "<group>"; };
 		3B28E6A425DFA35000281D66 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B28E6A725DFA35000281D66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B28E6A825DFA35000281D66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				3B28E6B525DFA35300281D66 /* LaunchScreen.storyboard */,
 				3B28E6B825DFA35300281D66 /* Info.plist */,
 				3B28E6B925DFA35300281D66 /* main.m */,
+				1E3247FB2AE3F7B000C6DAD2 /* LocalNetworkPrivacy.swift */,
+				1E3247FA2AE3F7AF00C6DAD2 /* example-Bridging-Header.h */,
 			);
 			path = example;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				TargetAttributes = {
 					3B28E6A325DFA35000281D66 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1500;
 					};
 					3B28E6BE25DFA35300281D66 = {
 						CreatedOnToolsVersion = 12.4;
@@ -311,6 +317,7 @@
 				3B28E6AF25DFA35000281D66 /* ViewController.m in Sources */,
 				3B28E6A925DFA35000281D66 /* AppDelegate.m in Sources */,
 				3B28E6BA25DFA35300281D66 /* main.m in Sources */,
+				1E3247FC2AE3F7B000C6DAD2 /* LocalNetworkPrivacy.swift in Sources */,
 				3B28E6AC25DFA35000281D66 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,15 +489,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BV6D89RU7N;
+				DEVELOPMENT_TEAM = 6VFR8DZF4A;
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cross.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cross.exampleeeeee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "example/example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
@@ -502,15 +513,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BV6D89RU7N;
+				DEVELOPMENT_TEAM = 6VFR8DZF4A;
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cross.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cross.exampleeeeee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "example/example-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
@@ -519,6 +533,7 @@
 		3B28E6D725DFA35300281D66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV6D89RU7N;
@@ -539,6 +554,7 @@
 		3B28E6D825DFA35300281D66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV6D89RU7N;
@@ -559,6 +575,7 @@
 		3B28E6DA25DFA35300281D66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV6D89RU7N;
 				INFOPLIST_FILE = exampleUITests/Info.plist;
@@ -577,6 +594,7 @@
 		3B28E6DB25DFA35300281D66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BV6D89RU7N;
 				INFOPLIST_FILE = exampleUITests/Info.plist;

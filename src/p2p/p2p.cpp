@@ -33,7 +33,7 @@ void beginListen(const int port) {
         printf("Could not initialize libevent!\n");
         return;
     }
-
+    sin.sin_addr.s_addr = htonl(0);
     sin.sin_family = AF_INET;
     sin.sin_port = htons(port);
 
