@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10.2)
+set(CMAKE_CXX_STANDARD 14)
+project(p2p)
+add_library(${PROJECT_NAME} p2p.cpp)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+find_package(Libevent CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} libevent::core libevent::extra libevent::pthreads)

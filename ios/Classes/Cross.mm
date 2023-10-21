@@ -2,6 +2,7 @@
 #include <string>
 #include <url_signature.h>
 #include <libt2u.h>
+#include <p2p.h>
 
 @implementation Cross
 - (NSString*)signatureUrl:(NSString *)url{
@@ -12,7 +13,12 @@
 }
 
 - (void)callLib {
-    t2u_init("", 0, "");
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];
+    [thread start];
+}
+
+- (void)start {
+    beginListen(9900);
 }
 
 @end

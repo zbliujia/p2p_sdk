@@ -13,6 +13,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ""
+                arguments "-DCMAKE_TOOLCHAIN_FILE=/Users/zyb/Downloads/p2pBuild/vcpkg/scripts/buildsystems/vcpkg.cmake"
             }
         }
     }
