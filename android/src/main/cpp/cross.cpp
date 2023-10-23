@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <string>
 #include "url_signature.h"
+#include "p2p.h"
 
 JavaVM *jvm = nullptr;
 
@@ -42,4 +43,10 @@ Java_com_cross_Cross_signatureUrl(JNIEnv *env, jclass clazz, jstring j_url) {
     auto result = env->NewStringUTF(SignatureUrl(url).c_str());
     env->ReleaseStringUTFChars(j_url, url);
     return result;
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_cross_Cross_beginListen(JNIEnv *env, jclass clazz, jint j_port) {
+    beginListen(j_port);
 }

@@ -7,6 +7,11 @@
 #include <errno.h>
 #include <stdio.h>
 #include <signal.h>
+#ifdef __ANDROID__
+#include <sys/endian.h>
+#include <netinet/in.h>
+#include <android/log.h>
+#endif
 #include <sys/socket.h>
 #include <event2/bufferevent.h>
 #include <event2/buffer.h>
@@ -31,6 +36,9 @@ void beginListen(const int port) {
     base = event_base_new();
     if (!base) {
         printf("Could not initialize libevent!\n");
+#ifdef __ANDROID__
+    __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "Could not initialize libevent!\n");
+#endif
         return;
     }
     sin.sin_addr.s_addr = htonl(0);
@@ -44,6 +52,9 @@ void beginListen(const int port) {
 
     if (!listener) {
         printf("Could not create a listener!\n");
+#ifdef __ANDROID__
+        __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "Could not create a listener!\n");
+#endif
         return;
     }
 
@@ -51,10 +62,16 @@ void beginListen(const int port) {
 
     if (!signal_event || event_add(signal_event, NULL)<0) {
         printf("Could not create/add a signal event!\n");
+#ifdef __ANDROID__
+        __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "Could not create/add a signal event!\n");
+#endif
         return;
     }
     
     printf("begin listen port: %d\n", port);
+#ifdef __ANDROID__
+    __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "begin listen port: %d\n", port);
+#endif
 
     event_base_dispatch(base);
 
@@ -63,6 +80,9 @@ void beginListen(const int port) {
     event_base_free(base);
 
     printf("done\n");
+#ifdef __ANDROID__
+    __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "done\n");
+#endif
 }
 
 static void
