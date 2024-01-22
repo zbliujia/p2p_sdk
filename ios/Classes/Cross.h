@@ -1,5 +1,7 @@
 
 @interface Cross : NSObject
-- (NSString*)signatureUrl:(NSString *)url;
-- (void)callLib;
+
+- (void)startServer;
+- (void)endServer;
+
 @end
