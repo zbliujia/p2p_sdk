@@ -1,11 +1,13 @@
 PODS:
   - cross (0.0.1)
+  - cross_debug (0.0.1)
   - GCDWebServer (3.5.4):
     - GCDWebServer/Core (= 3.5.4)
   - GCDWebServer/Core (3.5.4)
 
 DEPENDENCIES:
   - cross (from `../../`)
+  - cross_debug (from `../../`)
   - GCDWebServer (~> 3.0)
 
 SPEC REPOS:
@@ -15,11 +17,14 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   cross:
     :path: "../../"
+  cross_debug:
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  cross: 1d2dce8395be3c49a5a59941c1340f811117e609
+  cross: aa024e7084d3af66154b19c9ea520d451ef44d93
+  cross_debug: 98f8d6b28002a5e899ca9cba81315d89cb314e08
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
 
-PODFILE CHECKSUM: 6d8cdef509802aefabbd582fa04f0d1af9a5965a
+PODFILE CHECKSUM: 6b90c418ead796f91728b16f5b97f771fdc229ef
 
 COCOAPODS: 1.11.2

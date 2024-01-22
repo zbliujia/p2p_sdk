@@ -6,7 +6,8 @@ target 'example' do
   use_frameworks!
 
   # Pods for example
-  pod 'cross', :path => '../../'
+  pod 'cross_debug', :path => '../../', :configurations => ['Debug']
+  pod 'cross', :path => '../../', :configurations => ['Release']
   pod "GCDWebServer", "~> 3.0"
   
 end

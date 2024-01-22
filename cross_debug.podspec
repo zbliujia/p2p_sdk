@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = 'cross'
+  s.name             = 'cross_debug'
   s.version          = '0.0.1'
   s.summary          = 'cross library'
   s.description      = 'Cross library'
@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
 #   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   # s.source           = { :path => '.' }
-  s.ios.vendored_libraries = 'third_party/libhv/lib/Release/libhv_static.a'
+  s.ios.vendored_libraries = 'third_party/libhv/lib/Debug/libhv_static.a'
   s.source           = { :git => 'git@github.com:zbliujia/p2p_sdk.git', :tag => s.version.to_s }
   # 设置源文件，切记不要把测试代码包含进来
   s.source_files = 'ios/Classes/**/*','third_party/**/*.{c,cc,cpp,h,hpp}','src/**/*.{cc,cpp,h,hpp}'
