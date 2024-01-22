@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.vendored_libraries = 'third_party/libhv/lib/Debug/libhv_static.a'
   s.source           = { :git => 'git@github.com:zbliujia/p2p_sdk.git', :tag => s.version.to_s }
   # 设置源文件，切记不要把测试代码包含进来
-  s.source_files = 'ios/Classes/**/*','third_party/**/*.{c,cc,cpp,h,hpp}','src/**/*.{cc,cpp,h,hpp}'
+  s.source_files = 'ios/Classes/**/*','third_party/3rd/**/*.{c,cc,cpp,h,hpp}','third_party/libhv/**/*.{c,cc,cpp,h,hpp}','src/**/*.{cc,cpp,h,hpp}'
   # 暴露头文件，否则引用该spec的项目无法找到头文件
   s.public_header_files = 'ios/Classes/**/*.h'
   s.project_header_files = 'src/**/*.h'
