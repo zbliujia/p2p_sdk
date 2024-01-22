@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E3247FC2AE3F7B000C6DAD2 /* LocalNetworkPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3247FB2AE3F7B000C6DAD2 /* LocalNetworkPrivacy.swift */; };
+		1ED986CE2B5EB19A00EE933A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED986CD2B5EB19900EE933A /* WebKit.framework */; };
 		3B28E6A925DFA35000281D66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6A825DFA35000281D66 /* AppDelegate.m */; };
 		3B28E6AC25DFA35000281D66 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6AB25DFA35000281D66 /* SceneDelegate.m */; };
 		3B28E6AF25DFA35000281D66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6AE25DFA35000281D66 /* ViewController.m */; };
@@ -40,6 +41,7 @@
 		1028CBABAFF5FAC8F2C70DD6 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
 		1E3247FA2AE3F7AF00C6DAD2 /* example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "example-Bridging-Header.h"; sourceTree = "<group>"; };
 		1E3247FB2AE3F7B000C6DAD2 /* LocalNetworkPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkPrivacy.swift; sourceTree = "<group>"; };
+		1ED986CD2B5EB19900EE933A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3B28E6A425DFA35000281D66 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B28E6A725DFA35000281D66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B28E6A825DFA35000281D66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ED986CE2B5EB19A00EE933A /* WebKit.framework in Frameworks */,
 				807DEFBAC099AA4FDA920917 /* Pods_example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +89,7 @@
 		1C824774272F8C359CF8A53D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1ED986CD2B5EB19900EE933A /* WebKit.framework */,
 				1027DB460DF346CACEACC6DD /* Pods_example.framework */,
 			);
 			name = Frameworks;

@@ -18,7 +18,10 @@
         return;
     }
     sleep(2);
-    JZSDK_StartSession(device_token);
+    if (0 != JZSDK_StartSession(device_token)) {
+        printf("JZSDK_StartSession: failed\n");
+        return;
+    }
 
     while (true) {
         std::string url_prefix = std::string(JZSDK_GetUrlPrefix());

@@ -11,14 +11,21 @@
 #import "GCDWebServerDataResponse.h"
 #import <NetworkExtension/NEVPNManager.h>
 #import "example-Swift.h"
+#import <WebKit/WebKit.h>
 
 @interface ViewController () {
     GCDWebServer* _webServer;
 }
+@property (weak, nonatomic) IBOutlet WKWebView *webview;
 
 @end
 
 @implementation ViewController
+
+- (IBAction)click:(id)sender {
+//    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://127.0.0.1:8081/index.html"]]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,20 +50,20 @@
     // Do any additional setup after loading the view.
     
     // Create server
-      _webServer = [[GCDWebServer alloc] init];
-      
-      // Add a handler to respond to GET requests on any URL
-      [_webServer addDefaultHandlerForMethod:@"GET"
-                                requestClass:[GCDWebServerRequest class]
-                                processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
-        
-        return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Hello World</p></body></html>"];
-        
-      }];
-      
-      // Start server on port 8080
-      [_webServer startWithPort:18080 bonjourName:nil];
-      NSLog(@"Visit %@ in your web browser", _webServer.serverURL);
+//      _webServer = [[GCDWebServer alloc] init];
+//      
+//      // Add a handler to respond to GET requests on any URL
+//      [_webServer addDefaultHandlerForMethod:@"GET"
+//                                requestClass:[GCDWebServerRequest class]
+//                                processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
+//        
+//        return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Hello World</p></body></html>"];
+//        
+//      }];
+//      
+//      // Start server on port 8080
+//      [_webServer startWithPort:18080 bonjourName:nil];
+//      NSLog(@"Visit %@ in your web browser", _webServer.serverURL);
     
 }
 @end
