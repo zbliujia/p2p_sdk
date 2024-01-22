@@ -1,5 +1,10 @@
 #include "jzsdk.h"
 #include <iostream>
+#ifdef __ANDROID__
+#include <sys/endian.h>
+#include <netinet/in.h>
+#include <android/log.h>
+#endif
 #include "ClientNode.h"
 
 /**
@@ -9,6 +14,9 @@
 int JZSDK_Init(const char *user_token) {
     if (0 != ClientNode::instance().init(user_token)) {
         std::cout << "JZSDK_Init failed" << std::endl;
+#ifdef __ANDROID__
+    __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "JZSDK_Init failed!\n");
+#endif
         return -1;
     }
 

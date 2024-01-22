@@ -7,11 +7,11 @@
 //#include <errno.h>
 //#include <stdio.h>
 //#include <signal.h>
-//#ifdef __ANDROID__
-//#include <sys/endian.h>
-//#include <netinet/in.h>
-//#include <android/log.h>
-//#endif
+#ifdef __ANDROID__
+#include <sys/endian.h>
+#include <netinet/in.h>
+#include <android/log.h>
+#endif
 //#include <sys/socket.h>
 //#include <event2/bufferevent.h>
 //#include <event2/buffer.h>
@@ -28,6 +28,9 @@
 //static void signal_cb(evutil_socket_t, short, void *);
 //
 void beginListen(const int port) {
+#ifdef __ANDROID__
+    __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "beginListen!\n");
+#endif
 //    printf("create a listener!\n");
 //    struct event_base *base;
 //    struct evconnlistener *listener;

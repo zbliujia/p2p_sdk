@@ -14,9 +14,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.textView);
-        String url = "http://example.com?key2=value2&key3=value3&key1=VALUE1";
-        String result = Cross.signatureUrl(url);
-        textView.setText(url + "\n" + result);
+//        String url = "http://example.com?key2=value2&key3=value3&key1=VALUE1";
+//        String result = Cross.signatureUrl(url);
+//        textView.setText(url + "\n" + result);
         Thread thread = new Thread() {
             @Override
             public void run() {
