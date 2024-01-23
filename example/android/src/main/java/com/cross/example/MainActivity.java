@@ -32,7 +32,9 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                webView.loadUrl("https://www.baidu.com");
+//                webView.loadUrl("https://www.baidu.com");
+                webView.loadUrl("http://127.0.0.1:8081/index.html");
+//                webView.loadUrl("http://116.162.85.228:8080/GetDeviceInfo.php?token=token");
             }
         });
 //        String url = "http://example.com?key2=value2&key3=value3&key1=VALUE1";
