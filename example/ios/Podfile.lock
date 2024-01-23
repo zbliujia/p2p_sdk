@@ -21,8 +21,8 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  cross: c2eeaeeb2c5f8be0a7f74f007a2a99d6bbdff837
-  cross_debug: 5b873aa1d53e812f49654cefd95cc6a6ab386bdc
+  cross: e851855e2919a0f49d7ea73521be13b3902dbe45
+  cross_debug: cf38bb7df2e6628f2586e4108adbb548044afd68
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
 
 PODFILE CHECKSUM: 6b90c418ead796f91728b16f5b97f771fdc229ef

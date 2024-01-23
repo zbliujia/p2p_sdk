@@ -89,7 +89,7 @@
 #define HAVE_SETPROCTITLE 0
 #endif
 
-/* #undef WITH_OPENSSL */
+#define WITH_OPENSSL   1
 /* #undef WITH_GNUTLS */
 /* #undef WITH_MBEDTLS */
 
