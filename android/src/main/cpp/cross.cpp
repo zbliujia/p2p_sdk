@@ -1,5 +1,7 @@
 #include <jni.h>
 #include <string>
+#include <unistd.h>
+#include <android/log.h>
 #include "p2p.h"
 #include "jzsdk.h"
 
@@ -38,6 +40,27 @@ void test() {
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_cross_Cross_beginListen(JNIEnv *env, jclass clazz, jint j_port) {
-    beginListen(j_port);
-    JZSDK_Init("");
+//    beginListen(j_port);
+    const char *user_token = "11111111-1111-1111-1111-111111111111";
+    const char *device_token = "2B40679B-E676-DC05-AF49-F329D1C5FB36";
+    if (0 != JZSDK_Init(user_token)) {
+        __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "JZSDK_Init: failed!\n");
+        return;
+    }
+    sleep(2);
+    if (0 != JZSDK_StartSession(device_token)) {
+        __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "JZSDK_StartSession: failed!\n");
+        return;
+    }
+
+    while (true) {
+        std::string url_prefix = std::string(JZSDK_GetUrlPrefix());
+        if (url_prefix.empty()) {
+            __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "url_prefix: is empty\n");
+            sleep(1);
+        } else {
+            __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "url_prefix:%s\n", url_prefix.c_str());
+            break;
+        }
+    }
 }
