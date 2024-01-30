@@ -12,7 +12,7 @@ public:
      * @return
      */
     static std::string getServerHost() {
-        return "116.162.85.229";
+        return "223.76.169.40";
     }
 
     /**
