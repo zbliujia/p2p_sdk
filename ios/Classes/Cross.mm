@@ -5,34 +5,34 @@
 
 @implementation Cross
 
-- (void)startServer {
-    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];
-    [thread start];
-}
-
-- (void)start {
-    const char *user_token = "11111111-1111-1111-1111-111111111111";
-    const char *device_token = "2B40679B-E676-DC05-AF49-F329D1C5FB36";
-    if (0 != JZSDK_Init(user_token)) {
+- (NSString *)startServer:(NSString *)user withDevice:(NSString *)device {
+    if (0 != JZSDK_Init([user cStringUsingEncoding:NSUTF8StringEncoding])) {
         printf("JZSDK_Init: failed\n");
-        return;
+        return @"";
     }
     sleep(2);
-    if (0 != JZSDK_StartSession(device_token)) {
+    if (0 != JZSDK_StartSession([device cStringUsingEncoding:NSUTF8StringEncoding])) {
         printf("JZSDK_StartSession: failed\n");
-        return;
+        return @"";
     }
 
+    int whileCount = 0;
     while (true) {
+        // 最多等待10s
+        if (whileCount >= 10) {
+            break;
+        }
         std::string url_prefix = std::string(JZSDK_GetUrlPrefix());
         if (url_prefix.empty()) {
             printf("url_prefix: is empty\n");
             sleep(1);
+            whileCount++;
         } else {
             printf("url_prefix:%s\n", url_prefix.c_str());
-            break;
+            return [NSString stringWithCString:url_prefix.c_str() encoding:NSUTF8StringEncoding];
         }
     }
+    return @"";
 }
 
 - (void)endServer {

@@ -1,7 +1,7 @@
 
 @interface Cross : NSObject
 
-- (void)startServer;
+- (NSString *)startServer:(NSString *)user withDevice:(NSString *)device;
 - (void)endServer;
 
 @end
