@@ -39,28 +39,39 @@ void test() {
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_cross_Cross_beginListen(JNIEnv *env, jclass clazz, jint j_port) {
-//    beginListen(j_port);
-    const char *user_token = "11111111-1111-1111-1111-111111111111";
-    const char *device_token = "2B40679B-E676-DC05-AF49-F329D1C5FB36";
+Java_com_cross_Cross_endServer(JNIEnv *env, jclass clazz) {
+    JZSDK_StopSession();
+    JZSDK_Fini();
+}
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_cross_Cross_startServer(JNIEnv *env, jclass clazz, jstring j_user, jstring j_device) {
+    const char *user_token = env->GetStringUTFChars(j_user, NULL);
+    const char *device_token = env->GetStringUTFChars(j_device, NULL);
     if (0 != JZSDK_Init(user_token)) {
         __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "JZSDK_Init: failed!\n");
-        return;
+        return env->NewStringUTF("");
     }
     sleep(2);
     if (0 != JZSDK_StartSession(device_token)) {
         __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "JZSDK_StartSession: failed!\n");
-        return;
+        return env->NewStringUTF("");
     }
-
+    int whileCount = 0;
     while (true) {
+        if (whileCount >= 10) {
+            break;
+        }
         std::string url_prefix = std::string(JZSDK_GetUrlPrefix());
         if (url_prefix.empty()) {
             __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "url_prefix: is empty\n");
             sleep(1);
+            whileCount++;
         } else {
             __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "url_prefix:%s\n", url_prefix.c_str());
-            break;
+            return env->NewStringUTF(url_prefix.c_str());
         }
     }
+    return env->NewStringUTF("");
 }

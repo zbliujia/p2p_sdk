@@ -4,5 +4,6 @@ public class Cross {
     static {
         System.loadLibrary("cross");
     }
-    public static native void beginListen(int port);
+    public static native String startServer(String user, String device);
+    public static native void endServer();
 }
