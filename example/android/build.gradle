@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 android {
+    namespace "com.cross.example"
     compileSdkVersion 31
 
     lintOptions {
@@ -9,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.cross.example"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }

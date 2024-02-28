@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
             public void run() {
                 try {
                     Log. d("cross", "beginListen");
-                    Cross.beginListen(9900);
+                    Cross.startServer("", "");
                     Log. d("cross", "beginListen end");
                 } catch (Exception e) {
                     e.printStackTrace();
