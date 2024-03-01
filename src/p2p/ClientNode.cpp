@@ -16,11 +16,6 @@ enum TunnelId {
     kRelayTunnel = 101,
 };
 
-ClientNode &ClientNode::instance() {
-    static ClientNode obj;
-    return obj;
-}
-
 ClientNode::ClientNode() : run_(true),
                            relay_tunnel_(hv::TcpClient::loop()),
                            udp_tunnel_(hv::TcpClient::loop()),
@@ -545,4 +540,23 @@ int ClientNode::_finiUdpTunnel() {
     LOG_DEBUG("ClientNode::_finiUdpTunnel");
     udp_tunnel_.fini();
     return 0;
+}
+
+ClientNode *getClientNode() {
+    if (nullptr == g_ClientNode) {
+        g_ClientNode = new ClientNode();
+    }
+
+    return g_ClientNode;
+}
+
+void delClientNode() {
+    try {
+        if (nullptr != g_ClientNode) {
+            delete g_ClientNode;
+            g_ClientNode = nullptr;
+        }
+    }
+    catch (...) {
+    }
 }

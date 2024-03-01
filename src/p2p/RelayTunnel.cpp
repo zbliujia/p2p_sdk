@@ -224,7 +224,11 @@ int RelayTunnel::_onMessageTcpData(TcpTunnelMsgHeader *header, char *data, size_
         return -1;
     }
 
-    if (0 != ClientNode::instance().getProxyServer().sendDataToProxy(header->proxy_id, data, length)) {
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return -1;
+    }
+    if (0 != client_node->getProxyServer().sendDataToProxy(header->proxy_id, data, length)) {
         LOG_ERROR("RelayTunnel::_onMessageTcpData failed:invalid pointer or length." << header->toString()
                                                                                      << " length:" << length);
         return -1;
@@ -241,7 +245,11 @@ int RelayTunnel::_onMessageTcpFini(TcpTunnelMsgHeader *header) {
     }
     LOG_DEBUG("RelayTunnel::_onMessageTcpFini." << header->toString());
 
-    if (0 != ClientNode::instance().getProxyServer().delProxy(header->proxy_id)) {
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return -1;
+    }
+    if (0 != client_node->getProxyServer().delProxy(header->proxy_id)) {
         LOG_ERROR("RelayTunnel::_onMessageTcpFini failed in delProxy." << header->toString());
         return -1;
     } else {

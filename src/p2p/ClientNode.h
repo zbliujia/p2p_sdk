@@ -16,18 +16,8 @@
 
 class ClientNode : public hv::TcpClient {
 public:
-    // singleton pattern required
-    static ClientNode &instance();
-
-private:
-    // singleton pattern required
     ClientNode();
 
-    //ClientNode(const ClientNode &);
-
-    //ClientNode &operator=(const ClientNode &);
-
-public:
     ~ClientNode();
 
     int init(const std::string &user_token);
@@ -110,5 +100,14 @@ private:
     //
     ProxyServer proxy_server_;
 };
+
+//
+static ClientNode *g_ClientNode = nullptr;
+
+//
+ClientNode* getClientNode();
+
+//
+void delClientNode();
 
 #endif //SRC_CLIENT_NODE_H

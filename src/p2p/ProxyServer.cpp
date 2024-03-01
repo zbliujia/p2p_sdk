@@ -90,7 +90,11 @@ int ProxyServer::_onMessage(const hv::SocketChannelPtr &channel, hv::Buffer *buf
     LOG_DEBUG("ProxyServer::_onMessage. channel_id:" << channel->id() << " length:" << buf->size());
 #endif//DEBUG_PROXY_SERVER
 
-    int ret = ClientNode::instance().onProxyData(channel->id(), (char *) buf->data(), buf->size());
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return -1;
+    }
+    int ret = client_node->onProxyData(channel->id(), (char *) buf->data(), buf->size());
     if (-1 == ret) {
         LOG_ERROR("ProxyServer::_onMessage failed in sendDataToProxy."
                           << " channel_id:" << channel->id() << " length:" << buf->size());

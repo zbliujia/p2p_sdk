@@ -12,7 +12,8 @@
  * @return 0：成功；-1：失败；
  */
 int JZSDK_Init(const char *user_token) {
-    if (0 != ClientNode::instance().init(user_token)) {
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
         std::cout << "JZSDK_Init failed" << std::endl;
 #ifdef __ANDROID__
     __android_log_print(ANDROID_LOG_VERBOSE, "p2p", "JZSDK_Init failed!\n");
@@ -20,7 +21,12 @@ int JZSDK_Init(const char *user_token) {
         return -1;
     }
 
-    if (0 != ClientNode::instance().start()) {
+    if (0 != client_node->init(user_token)) {
+        std::cout << "JZSDK_Init failed" << std::endl;
+        return -1;
+    }
+
+    if (0 != client_node->start()) {
         std::cout << "JZSDK_Start failed" << std::endl;
         return -1;
     }
@@ -34,11 +40,18 @@ int JZSDK_Init(const char *user_token) {
  * @return 0：成功；-1：失败；
  */
 int JZSDK_Fini() {
-    ClientNode::instance().stop();
-    if (0 != ClientNode::instance().fini()) {
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return 0;
+    }
+
+    client_node->stop();
+    if (0 != client_node->fini()) {
         std::cout << "JZSDK_Fini failed" << std::endl;
         return -1;
     }
+
+    delClientNode();
 
     std::cout << "JZSDK_Fini succeed" << std::endl;
     return 0;
@@ -50,7 +63,12 @@ int JZSDK_Fini() {
  * @return 0：成功；-1：失败；
  */
 int JZSDK_StartSession(const char *device_token) {
-    if (0 != ClientNode::instance().startSession(device_token)) {
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return -1;
+    }
+
+    if (0 != client_node->startSession(device_token)) {
         std::cout << "JZSDK_StartSession failed" << std::endl;
         return -1;
     }
@@ -65,7 +83,12 @@ int JZSDK_StartSession(const char *device_token) {
  * @return 0：成功；-1：失败；
  */
 int JZSDK_StopSession() {
-    if (0 != ClientNode::instance().stopSession()) {
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return -1;
+    }
+
+    if (0 != client_node->stopSession()) {
         std::cout << "JZSDK_StopSession failed" << std::endl;
         return -1;
     }
@@ -75,5 +98,10 @@ int JZSDK_StopSession() {
 }
 
 char *JZSDK_GetUrlPrefix() {
-    return (char *) ClientNode::instance().getUrlPrefix();
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return nullptr;
+    }
+
+    return (char *) client_node->getUrlPrefix();
 }

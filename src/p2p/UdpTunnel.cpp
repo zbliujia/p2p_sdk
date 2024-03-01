@@ -8,7 +8,7 @@
 #include "kcp/KcpConfig.h"
 #include "ClientNode.h"
 
-#define DEBUG_UDP_TUNNEL
+//#define DEBUG_UDP_TUNNEL
 
 int kcp_send_callback(const char *data, int size, ikcpcb *kcp, void *user) {
     if ((nullptr == data) || (size <= 0) || (nullptr == kcp) || (nullptr == user)) {
@@ -413,7 +413,11 @@ int UdpTunnel::_onMessageTcpData(const UdpTunnelMsgHeader &header, char *data) {
     LOG_DEBUG("UdpTunnel::_onMessageTcpData." << header.toString());
 #endif//DEBUG_UDP_TUNNEL
 
-    if (-1 == ClientNode::instance().getProxyServer().sendDataToProxy(header.proxy_id, data, header.length)) {
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return -1;
+    }
+    if (0 != client_node->getProxyServer().sendDataToProxy(header.proxy_id, data, header.length)) {
         _sendTcpFinMsg(header.proxy_id);
     }
 
@@ -424,7 +428,11 @@ int UdpTunnel::_onMessageTcpFini(const UdpTunnelMsgHeader &header) {
 #ifdef DEBUG_UDP_TUNNEL
     LOG_DEBUG("UdpTunnel::_onMessageTcpFini. " << header.toString());
 #endif//DEBUG_UDP_TUNNEL
-    if (0 != ClientNode::instance().getProxyServer().delProxy(header.proxy_id)) {
+    ClientNode *client_node = getClientNode();
+    if (nullptr == client_node) {
+        return -1;
+    }
+    if (0 != client_node->getProxyServer().delProxy(header.proxy_id)) {
         LOG_ERROR("UdpTunnel::_onMessageTcpFini failed in ProxyServer::delProxy. proxy_id:" << header.proxy_id);
     }
 
