@@ -9,10 +9,10 @@
 #include "hv/TcpClient.h"
 #include "UdpTunnel.h"
 #include "RelayTunnel.h"
-#include "JsonHelper.h"
+#include "x/JsonHelper.h"
 #include "ProxyServer.h"
 
-//#define DEBUG_CLIENT_NODE
+// #define DEBUG_CLIENT_NODE
 
 class ClientNode : public hv::TcpClient {
 public:
@@ -45,7 +45,6 @@ public:
     const char *getUrlPrefix();
 
 private:
-
     int _onConnected(const hv::SocketChannelPtr &channel);
 
     int _onMessage(const hv::SocketChannelPtr &channel, const std::string &msg);
@@ -63,7 +62,6 @@ private:
     bool _directConnect(const std::string &device_local_ip);
 
     uint32_t _getTunnelId(uint32_t proxy_id, bool &new_proxy);
-
 
     int _initProxyServer();
 
@@ -84,7 +82,7 @@ private:
     volatile bool run_;
     std::string user_token_;
 
-    //直连
+    // 直连
     std::string url_prefix_;
 
     // proxy_id - tunnel_id
@@ -105,9 +103,9 @@ private:
 static ClientNode *g_ClientNode = nullptr;
 
 //
-ClientNode* getClientNode();
+ClientNode *getClientNode();
 
 //
 void delClientNode();
 
-#endif //SRC_CLIENT_NODE_H
+#endif  // SRC_CLIENT_NODE_H
