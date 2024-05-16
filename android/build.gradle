@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 android {
     namespace "com.cross"
     compileSdkVersion 33
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "34.0.0"
 //    android.ndkVersion "26.1.10909125"
 
     defaultConfig {
